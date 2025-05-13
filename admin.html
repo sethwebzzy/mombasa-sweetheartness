@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Mombasa Sweetheartness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        .sidebar.collapsed {
+            width: 80px;
+        }
+        .sidebar.collapsed .sidebar-text {
+            display: none;
+        }
+        .sidebar.collapsed .logo-text {
+            display: none;
+        }
+        .sidebar.collapsed .menu-item {
+            justify-content: center;
+        }
+        .content-area {
+            transition: all 0.3s ease;
+        }
+        .content-area.expanded {
+            margin-left: 80px;
+        }
+        .chart-container {
+            height: 300px;
+        }
+        .active-menu {
+            background-color: rgba(247, 37, 133, 0.1);
+            border-left: 4px solid #f72585;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <div class="sidebar bg-white shadow-lg w-64 fixed h-full z-50">
+            <div class="p-4 border-b border-gray-200 flex items-center space-x-2">
+                <i class="fas fa-heart text-2xl text-pink-600"></i>
+                <span class="logo-text text-xl font-bold">Sweetheartness Admin</span>
+            </div>
+            <div class="p-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-white">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <div class="sidebar-text font-medium">Charles Obuya</div>
+                        <div class="sidebar-text text-xs text-gray-500">Super Admin</div>
+                    </div>
+                </div>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 active-menu">
+                            <i class="fas fa-tachometer-alt text-pink-600"></i>
+                            <span class="sidebar-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                            <i class="fas fa-users text-blue-500"></i>
+                            <span class="sidebar-text">Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                            <i class="fas fa-heart text-red-500"></i>
+                            <span class="sidebar-text">Matches</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                            <i class="fas fa-comments text-green-500"></i>
+                            <span class="sidebar-text">Messages</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                            <i class="fas fa-money-bill-wave text-yellow-500"></i>
+                            <span class="sidebar-text">Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                            <i class="fas fa-flag text-purple-500"></i>
+                            <span class="sidebar-text">Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                            <i class="fas fa-cog text-gray-500"></i>
+                            <span class="sidebar-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="absolute bottom-0 w-full p-4 border-t border-gray-200">
+                <a href="#" class="menu-item flex items-center space-x-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-sign-out-alt text-gray-500"></i>
+                    <span class="sidebar-text">Logout</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-area flex-1 overflow-auto ml-64">
+            <!-- Top Navigation -->
+            <header class="bg-white shadow-sm py-4 px-6 flex justify-between items-center sticky top-0 z-40">
+                <div class="flex items-center space-x-4">
+                    <button id="toggleSidebar" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <h1 class="text-xl font-semibold text-gray-800">Admin Dashboard</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <button class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-envelope text-xl"></i>
+                            <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-pink-600 flex items-center justify-center text-white">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="hidden md:inline text-sm font-medium">Charles Obuya</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="p-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500">Total Users</p>
+                                <h3 class="text-2xl font-bold">12,458</h3>
+                                <p class="text-sm text-green-500 mt-1">
+                                    <i class="fas fa-arrow-up mr-1"></i> 12.5% from last week
+                                </p>
+                            </div>
+                            <div class="bg-pink-100 p-3 rounded-full">
+                                <i class="fas fa-users text-pink-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500">Active Matches</p>
+                                <h3 class="text-2xl font-bold">3,245</h3>
+                                <p class="text-sm text-green-500 mt-1">
+                                    <i class="fas fa-arrow-up mr-1"></i> 8.3% from last week
+                                </p>
+                            </div>
+                            <div class="bg-blue-100 p-3 rounded-full">
+                                <i class="fas fa-heart text-blue-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500">Premium Members</p>
+                                <h3 class="text-2xl font-bold">1,876</h3>
+                                <p class="text-sm text-red-500 mt-1">
+                                    <i class="fas fa-arrow-down mr-1"></i> 2.1% from last week
+                                </p>
+                            </div>
+                            <div class="bg-yellow-100 p-3 rounded-full">
+                                <i class="fas fa-crown text-yellow-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500">Revenue (KES)</p>
+                                <h3 class="text-2xl font-bold">487,320</h3>
+                                <p class="text-sm text-green-500 mt-1">
+                                    <i class="fas fa-arrow-up mr-1"></i> 15.7% from last week
+                                </p>
+                            </div>
+                            <div class="bg-green-100 p-3 rounded-full">
+                                <i class="fas fa-money-bill-wave text-green-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- User Growth Chart -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-lg font-semibold">User Growth</h2>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 text-xs bg-gray-100 rounded">Week</button>
+                                <button class="px-3 py-1 text-xs bg-pink-600 text-white rounded">Month</button>
+                                <button class="px-3 py-1 text-xs bg-gray-100 rounded">Year</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="userGrowthChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Revenue Chart -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-lg font-semibold">Revenue Breakdown</h2>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-1 text-xs bg-gray-100 rounded">Week</button>
+                                <button class="px-3 py-1 text-xs bg-pink-600 text-white rounded">Month</button>
+                                <button class="px-3 py-1 text-xs bg-gray-100 rounded">Year</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity & Top Users -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Recent Activity -->
+                    <div class="bg-white rounded-lg shadow p-6 lg:col-span-2">
+                        <h2 class="text-lg font-semibold mb-4">Recent Activity</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">New user registered: <span class="text-pink-600">Sarah M.</span></p>
+                                    <p class="text-xs text-gray-500">2 minutes ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">New match: <span class="text-blue-600">James</span> and <span class="text-blue-600">Lilian</span></p>
+                                    <p class="text-xs text-gray-500">15 minutes ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium"><span class="text-yellow-600">David K.</span> upgraded to Premium</p>
+                                    <p class="text-xs text-gray-500">1 hour ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                                    <i class="fas fa-flag"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Profile reported: <span class="text-red-600">User #4582</span></p>
+                                    <p class="text-xs text-gray-500">3 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Payment received from <span class="text-green-600">Grace W.</span> (KES 500)</p>
+                                    <p class="text-xs text-gray-500">5 hours ago</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="mt-4 text-sm text-pink-600 hover:underline">View All Activity</button>
+                    </div>
+                    
+                    <!-- Top Users -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-lg font-semibold mb-4">Top Active Users</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full overflow-hidden">
+                                    <img src="./public/1.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">Aisha K.</p>
+                                    <p class="text-xs text-gray-500">25 matches this week</p>
+                                </div>
+                                <span class="bg-pink-100 text-pink-600 text-xs px-2 py-1 rounded-full">VIP</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full overflow-hidden">
+                                    <img src="./public/12.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">Jamal M.</p>
+                                    <p class="text-xs text-gray-500">18 matches this week</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full">Premium</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full overflow-hidden">
+                                    <img src="./public/7.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">Grace W.</p>
+                                    <p class="text-xs text-gray-500">15 matches this week</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full">Premium</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full overflow-hidden">
+                                    <img src="./public/89.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">David O.</p>
+                                    <p class="text-xs text-gray-500">12 matches this week</p>
+                                </div>
+                                <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Basic</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full overflow-hidden">
+                                    <img src="./public/8.jpg" alt="User" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">Sarah J.</p>
+                                    <p class="text-xs text-gray-500">10 matches this week</p>
+                                </div>
+                                <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Basic</span>
+                            </div>
+                        </div>
+                        <button class="mt-4 text-sm text-pink-600 hover:underline">View All Users</button>
+                    </div>
+                </div>
+
+                <!-- Recent Reports -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-semibold">Recent Reports</h2>
+                        <button class="text-sm text-pink-600 hover:underline">View All Reports</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Report ID</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reported User</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reason</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#4582</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">User #7821</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Inappropriate content</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Pending</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-pink-600 hover:text-pink-900 mr-3">Review</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Dismiss</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#4581</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">User #6523</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Fake profile</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Investigating</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-pink-600 hover:text-pink-900 mr-3">Review</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Dismiss</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#4580</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">User #9145</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Harassment</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Resolved</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-pink-600 hover:text-pink-900 mr-3">View</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Archive</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#4579</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">User #3287</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Spam messages</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Resolved</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-pink-600 hover:text-pink-900 mr-3">View</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Archive</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#4578</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">User #1256</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Underage user</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Pending</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-pink-600 hover:text-pink-900 mr-3">Review</button>
+                                        <button class="text-gray-600 hover:text-gray-900">Dismiss</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('collapsed');
+            document.querySelector('.content-area').classList.toggle('expanded');
+            document.querySelector('.content-area').classList.toggle('ml-64');
+        });
+
+        // Initialize charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // User Growth Chart
+            const userGrowthCtx = document.getElementById('userGrowthChart').getContext('2d');
+            const userGrowthChart = new Chart(userGrowthCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        label: 'New Users',
+                        data: [850, 920, 1020, 1150, 1200, 1350, 1480],
+                        backgroundColor: 'rgba(247, 37, 133, 0.1)',
+                        borderColor: 'rgba(247, 37, 133, 1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Revenue Chart
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            const revenueChart = new Chart(revenueCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Basic', 'Premium', 'VIP', 'Ads', 'Other'],
+                    datasets: [{
+                        label: 'Revenue (KES)',
+                        data: [120000, 250000, 80000, 20000, 17320],
+                        backgroundColor: [
+                            'rgba(99, 102, 241, 0.7)',
+                            'rgba(244, 63, 94, 0.7)',
+                            'rgba(234, 179, 8, 0.7)',
+                            'rgba(16, 185, 129, 0.7)',
+                            'rgba(139, 92, 246, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(99, 102, 241, 1)',
+                            'rgba(244, 63, 94, 1)',
+                            'rgba(234, 179, 8, 1)',
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(139, 92, 246, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+
+        // Active menu item highlighting
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                menuItems.forEach(i => i.parentElement.classList.remove('active-menu'));
+                this.parentElement.classList.add('active-menu');
+            });
+        });
+    </script>
+</body>
+</html>

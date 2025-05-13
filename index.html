@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mombasa Sweetheartness Hookup Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .chat-bubble {
+            border-radius: 20px;
+            position: relative;
+        }
+        .chat-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color: #f3f4f6;
+            border-bottom: 0;
+            margin-left: -10px;
+            margin-bottom: -10px;
+        }
+        .wave {
+            animation: wave 2s infinite;
+        }
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-heart text-2xl"></i>
+                <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-gray-200">Home</a>
+                <a href="#" class="hover:text-gray-200">Matches</a>
+                <a href="#" class="hover:text-gray-200">Messages</a>
+                <a href="#" class="hover:text-gray-200">Premium</a>
+                <a href="#" class="hover:text-gray-200">About</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="bg-white text-pink-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100">Sign Up</button>
+                <button class="hidden md:block border border-white px-4 py-2 rounded-full hover:bg-white hover:text-pink-600">Login</button>
+                <button class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Find Your Perfect Match in Mombasa</h1>
+                <p class="text-xl mb-6">Connect with verified singles looking for love, friendship, or casual dating in Kenya's coastal paradise.</p>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-white text-pink-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100">Join Now - It's Free</button>
+                    <button class="border border-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-pink-600">How It Works</button>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="bg-white rounded-xl p-4 shadow-xl relative z-10">
+                    <div class="flex space-x-4 mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gray-200 overflow-hidden">
+                            <img src="./public/4.jpg" alt="Profile" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800">Sarah, 23</h3>
+                            <p class="text-gray-600">Mombasa • 5km away</p>
+                            <div class="flex mt-1">
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">Verified</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Online</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg mb-4 chat-bubble">
+                        <p class="text-gray-800">Hi there! I love the beach and exploring new places. What about you?</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="w-10 h-10 rounded-full bg-red-100 text-red-500 flex items-center justify-center hover:bg-red-200">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <button class="flex-1 bg-pink-500 text-white py-2 rounded-full font-semibold hover:bg-pink-600">
+                            <i class="fas fa-heart mr-2"></i> Like
+                        </button>
+                        <button class="w-10 h-10 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center hover:bg-blue-200">
+                            <i class="fas fa-comment"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center text-4xl wave">
+                    <i class="fas fa-heart text-white"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose Mombasa Sweetheartness?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Verified Profiles</h3>
+                    <p class="text-gray-600">All profiles undergo verification to ensure authenticity and build trust within our community.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Local Matches</h3>
+                    <p class="text-gray-600">Find people near you with our advanced location-based matching system tailored for Mombasa.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Secure Messaging</h3>
+                    <p class="text-gray-600">Private conversations with end-to-end encryption to keep your chats safe and confidential.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profiles Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Meet Local Singles</h2>
+                <a href="#" class="text-pink-600 font-semibold hover:underline">View All</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Profile Card 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md profile-card transition duration-300">
+                    <div class="relative">
+                        <img src="public/5.jpg" alt="Profile" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow">
+                            <i class="fas fa-heart text-pink-500"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white font-bold text-xl">Aisha, 26</h3>
+                            <p class="text-gray-200">Mombasa • 3km away</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Loves beach walks and trying new restaurants. Looking for someone to explore the city with.</p>
+                        <button class="w-full bg-pink-500 text-white py-2 rounded-full font-semibold hover:bg-pink-600">Send Message</button>
+                    </div>
+                </div>
+                
+                <!-- Profile Card 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md profile-card transition duration-300">
+                    <div class="relative">
+                        <img src="./public/12.jpg" alt="Profile" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow">
+                            <i class="fas fa-heart text-pink-500"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white font-bold text-xl">Jamal, 25</h3>
+                            <p class="text-gray-200">Nyali • 7km away</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Professional photographer who enjoys sunset views at Fort Jesus. Seeking meaningful connections.</p>
+                        <button class="w-full bg-pink-500 text-white py-2 rounded-full font-semibold hover:bg-pink-600">Send Message</button>
+                    </div>
+                </div>
+                
+                <!-- Profile Card 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md profile-card transition duration-300">
+                    <div class="relative">
+                        <img src="./public/6.jpg" alt="Profile" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow">
+                            <i class="fas fa-heart text-pink-500"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white font-bold text-xl">Grace, 26</h3>
+                            <p class="text-gray-200">Bamburi • 5km away</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Hotel manager who loves swimming and reggae music. Open to new experiences and friendships.</p>
+                        <button class="w-full bg-pink-500 text-white py-2 rounded-full font-semibold hover:bg-pink-600">Send Message</button>
+                    </div>
+                </div>
+                
+                <!-- Profile Card 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md profile-card transition duration-300">
+                    <div class="relative">
+                        <img src="./public/3.jpg" alt="Profile" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow">
+                            <i class="fas fa-heart text-pink-500"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                            <h3 class="text-white font-bold text-xl">Gloria, 24</h3>
+                            <p class="text-gray-200">Kisauni • 9km away</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Tour guide passionate about Swahili culture and history. Looking for someone to share adventures with.</p>
+                        <button class="w-full bg-pink-500 text-white py-2 rounded-full font-semibold hover:bg-pink-600">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Section -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Upgrade to Premium</h2>
+                <p class="text-xl max-w-2xl mx-auto">Unlock exclusive features and increase your chances of finding the perfect match</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl border border-white border-opacity-20">
+                    <h3 class="text-2xl font-bold mb-4">Basic</h3>
+                    <div class="text-4xl font-bold mb-6">Free</div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                            <span>Create a profile</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                            <span>Browse profiles</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                            <span>Send 5 likes per day</span>
+                        </li>
+                    </ul>
+                    <button class="w-full border border-white py-3 rounded-full font-semibold hover:bg-white hover:text-pink-600">Current Plan</button>
+                </div>
+                <div class="bg-white text-gray-800 p-8 rounded-xl shadow-xl relative">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-bl-lg rounded-tr-lg text-sm font-bold">POPULAR</div>
+                    <h3 class="text-2xl font-bold mb-4">Premium</h3>
+                    <div class="text-4xl font-bold mb-6">KES 500<span class="text-lg">/month</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-500"></i>
+                            <span>Unlimited likes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-500"></i>
+                            <span>See who liked you</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-500"></i>
+                            <span>Priority in search results</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-500"></i>
+                            <span>Advanced filters</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-500"></i>
+                            <span>Read receipts</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-pink-600 text-white py-3 rounded-full font-semibold hover:bg-pink-700">Upgrade Now</button>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl border border-white border-opacity-20">
+                    <h3 class="text-2xl font-bold mb-4">VIP</h3>
+                    <div class="text-4xl font-bold mb-6">KES 1,200<span class="text-lg">/3 months</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                            <span>All Premium features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                            <span>Profile boost weekly</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                            <span>Exclusive VIP badge</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle mr-3 text-green-300"></i>
+                            <span>Dedicated support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full border border-white py-3 rounded-full font-semibold hover:bg-white hover:text-pink-600">Choose VIP</button>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-sm opacity-80">Payments processed securely via M-Pesa. Cancel anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Success Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="./public/2.jpg" alt="Testimonial" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Lilian & Mark</h4>
+                            <p class="text-gray-600">Matched 6 months ago</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"We connected on Mombasa Sweetheartness and instantly hit it off. Our first date was at Tamarind Restaurant, and we've been inseparable ever since. Thank you for bringing us together!"</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="./public/9.jpg" alt="Testimonial" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">James</h4>
+                            <p class="text-gray-600">Premium Member</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"As a busy professional, I didn't have time to meet people. This platform made it easy to connect with like-minded individuals. The premium features are worth every shilling!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Developer -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-4xl mx-auto">
+                <div class="md:flex">
+                    <div class="md:w-1/3 bg-pink-600 p-8 flex flex-col items-center justify-center text-white">
+                        <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white mb-4">
+                            <img src="./public/88.jpg" alt="Charles Obuya" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold">Charles Obuya</h3>
+                        <p class="text-pink-100">Platform Developer & Admin</p>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="text-white hover:text-gray-200">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-gray-200">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-gray-200">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <h2 class="text-2xl font-bold mb-4 text-gray-800">About the Developer</h2>
+                        <p class="text-gray-600 mb-4">Charles Obuya is the creator and administrator of Mombasa Sweetheartness, a passionate developer dedicated to creating meaningful connections in Kenya's coastal region.</p>
+                        <p class="text-gray-600 mb-4">With extensive experience in web development and user experience design, Charles has built this platform with a focus on security, privacy, and user satisfaction.</p>
+                        <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                            <h4 class="font-bold mb-2 text-gray-800">Platform Responsibilities:</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>User verification and moderation</li>
+                                <li>Payment and subscription management</li>
+                                <li>Responding to user reports and feedback</li>
+                                <li>Analyzing platform data to improve performance</li>
+                            </ul>
+                        </div>
+                        <button class="bg-pink-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-700">Contact Developer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-gray-800 hover:text-pink-600 focus:outline-none">
+                        <span>How does the matching system work?</span>
+                        <i class="fas fa-chevron-down text-pink-500"></i>
+                    </button>
+                    <div class="mt-2 text-gray-600">
+                        Our algorithm matches users based on location, interests, and preferences you set in your profile. The more complete your profile, the better our system can suggest compatible matches.
+                    </div>
+                </div>
+                <div class="border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-gray-800 hover:text-pink-600 focus:outline-none">
+                        <span>Is my personal information safe?</span>
+                        <i class="fas fa-chevron-down text-pink-500"></i>
+                    </button>
+                    <div class="mt-2 text-gray-600">
+                        Absolutely. We use end-to-end encryption for all communications and never share your personal data with third parties. Our verification process ensures all members are genuine while protecting your privacy.
+                    </div>
+                </div>
+                <div class="border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-gray-800 hover:text-pink-600 focus:outline-none">
+                        <span>How do I pay for premium membership?</span>
+                        <i class="fas fa-chevron-down text-pink-500"></i>
+                    </button>
+                    <div class="mt-2 text-gray-600">
+                        We accept M-Pesa payments for your convenience. After selecting your preferred plan, you'll receive a payment prompt via SMS. You can also manage subscriptions through our Telegram bot.
+                    </div>
+                </div>
+                <div class="border-b border-gray-200 pb-4">
+                    <button class="flex justify-between items-center w-full text-left font-semibold text-gray-800 hover:text-pink-600 focus:outline-none">
+                        <span>Can I use the platform outside Mombasa?</span>
+                        <i class="fas fa-chevron-down text-pink-500"></i>
+                    </button>
+                    <div class="mt-2 text-gray-600">
+                        While we're currently focused on Mombasa and surrounding areas, you can use the platform anywhere in Kenya. We're planning to expand to more cities soon!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Find Your Mombasa Sweetheart?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of singles who've already found meaningful connections on our platform.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <button class="bg-white text-pink-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100">Sign Up Free</button>
+                <button class="border border-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-pink-600">Take The Tour</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-heart text-2xl text-pink-500"></i>
+                        <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+                    </div>
+                    <p class="text-gray-400">Kenya's premier dating platform for the coastal region, connecting hearts since 2023.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Success Stories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Safety Tips</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Community Guidelines</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Email: obuyacharles39@gmail.com</p>
+                    <p class="text-gray-400">Tel: +254 743-173-341</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Mombasa Sweetheartness Hookup Site. Developed by Charles Obuya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ toggle functionality
+        document.querySelectorAll('section#faq button').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                if (answer.style.display === 'none' || !answer.style.display) {
+                    answer.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    answer.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Mobile menu toggle would go here in a real implementation
+    </script>
+</body>
+</html>
