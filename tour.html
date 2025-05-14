@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mombasa Sweetheartness - Platform Tour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .platform-showcase {
+            border-radius: 15px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .tab-button.active {
+            background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+            color: white;
+        }
+        .screenshot-container {
+            perspective: 1000px;
+        }
+        .screenshot {
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+        .screenshot:hover {
+            transform: rotateY(10deg) scale(1.03);
+        }
+        .floating-device {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .highlight-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(247, 37, 133, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-heart text-2xl"></i>
+                <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="border border-white px-4 py-2 rounded-full hover:bg-white hover:text-pink-600">Back to Home</a>
+                <a href="signup.html" class="bg-white text-pink-600 px-4 py-2 rounded-full font-medium hover:bg-pink-50">Sign Up Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Explore Mombasa Sweetheartness</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Take a tour of our dating platform designed specifically for Mombasa singles</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#features" class="bg-white text-pink-600 px-6 py-3 rounded-full font-bold hover:bg-pink-50">See Features</a>
+                <a href="signup.html" class="border-2 border-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-pink-600">Join Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Showcase -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Your Journey to Love Starts Here</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover how our platform makes finding your perfect match in Mombasa easy and enjoyable</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <div class="lg:w-1/2">
+                    <div class="relative floating-device">
+                        <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Mobile App Screenshot" class="w-full max-w-md mx-auto platform-showcase">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-full shadow-xl highlight-pulse hidden md:block">
+                            <i class="fas fa-heart text-3xl text-pink-500"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="max-w-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Beautiful, Intuitive Interface</h3>
+                        <p class="text-gray-600 mb-6">Our platform is designed with Mombasa singles in mind. The clean, modern interface makes it easy to:</p>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span class="text-gray-700">Browse profiles with high-quality photos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span class="text-gray-700">Get personalized match suggestions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span class="text-gray-700">Connect with matches through secure messaging</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <span class="text-gray-700">Discover local dating spots in Mombasa</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="signup.html" class="gradient-bg text-white px-6 py-3 rounded-full font-bold inline-block hover:opacity-90">Create Your Profile Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Tabs -->
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Key Features Designed for You</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore what makes Mombasa Sweetheartness the best dating platform in the region</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center mb-8 gap-2">
+                    <button class="tab-button active px-6 py-2 rounded-full font-medium border border-pink-500 mr-2 mb-2" data-tab="profile">Profile Creation</button>
+                    <button class="tab-button px-6 py-2 rounded-full font-medium border border-pink-500 mr-2 mb-2" data-tab="matching">Smart Matching</button>
+                    <button class="tab-button px-6 py-2 rounded-full font-medium border border-pink-500 mr-2 mb-2" data-tab="messaging">Secure Messaging</button>
+                    <button class="tab-button px-6 py-2 rounded-full font-medium border border-pink-500 mr-2 mb-2" data-tab="events">Local Events</button>
+                    <button class="tab-button px-6 py-2 rounded-full font-medium border border-pink-500 mr-2 mb-2" data-tab="safety">Safety Features</button>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- Profile Tab Content -->
+                    <div class="tab-content active p-8 md:p-12" id="profile-content">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2 screenshot-container">
+                                <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Profile Creation" class="screenshot w-full rounded-lg border border-gray-200">
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">Create a Standout Profile</h3>
+                                <p class="text-gray-600 mb-6">Your profile is your chance to make a great first impression. We guide you through creating a profile that truly represents you.</p>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-camera"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Photo Verification</h4>
+                                            <p class="text-gray-600">Get verified with our photo verification system to show you're genuine</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Profile Prompts</h4>
+                                            <p class="text-gray-600">Answer fun questions to showcase your personality</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-sliders-h"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Customization</h4>
+                                            <p class="text-gray-600">Highlight your interests, values, and what you're looking for</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Matching Tab Content -->
+                    <div class="tab-content hidden p-8 md:p-12" id="matching-content">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2 screenshot-container">
+                                <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Smart Matching" class="screenshot w-full rounded-lg border border-gray-200">
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">Smart Compatibility Matching</h3>
+                                <p class="text-gray-600 mb-6">Our advanced algorithm learns your preferences to suggest better matches over time.</p>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-brain"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Personality Analysis</h4>
+                                            <p class="text-gray-600">Matches based on personality traits and values</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Location-Based</h4>
+                                            <p class="text-gray-600">Focuses on matches within Mombasa and surrounding areas</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Learning Algorithm</h4>
+                                            <p class="text-gray-600">Improves suggestions based on your interactions</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Messaging Tab Content -->
+                    <div class="tab-content hidden p-8 md:p-12" id="messaging-content">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2 screenshot-container">
+                                <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Secure Messaging" class="screenshot w-full rounded-lg border border-gray-200">
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">Safe & Fun Communication</h3>
+                                <p class="text-gray-600 mb-6">Break the ice and build connections with our secure messaging features.</p>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">End-to-End Encryption</h4>
+                                            <p class="text-gray-600">Your conversations stay private and secure</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-comment-dots"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Icebreaker Questions</h4>
+                                            <p class="text-gray-600">Pre-written questions to help start conversations</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Photo Sharing</h4>
+                                            <p class="text-gray-600">Share moments from your favorite Mombasa spots</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Events Tab Content -->
+                    <div class="tab-content hidden p-8 md:p-12" id="events-content">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2 screenshot-container">
+                                <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Local Events" class="screenshot w-full rounded-lg border border-gray-200">
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">Local Dating Experiences</h3>
+                                <p class="text-gray-600 mb-6">Discover and join exclusive singles events at Mombasa's best venues.</p>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Curated Events</h4>
+                                            <p class="text-gray-600">From beach mixers to Old Town cultural dates</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-utensils"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Date Spots</h4>
+                                            <p class="text-gray-600">Verified safe and romantic locations in Mombasa</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Group Activities</h4>
+                                            <p class="text-gray-600">Low-pressure group outings to meet new people</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Safety Tab Content -->
+                    <div class="tab-content hidden p-8 md:p-12" id="safety-content">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2 screenshot-container">
+                                <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Safety Features" class="screenshot w-full rounded-lg border border-gray-200">
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">Your Safety Comes First</h3>
+                                <p class="text-gray-600 mb-6">We prioritize your security with multiple protective measures.</p>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-id-card"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Profile Verification</h4>
+                                            <p class="text-gray-600">All profiles are manually reviewed</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-ban"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Block & Report</h4>
+                                            <p class="text-gray-600">Easily block or report suspicious accounts</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="bg-pink-100 text-pink-600 p-2 rounded-full mr-4">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-800">Safety Tips</h4>
+                                            <p class="text-gray-600">Guidance for safe online dating and meetups</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Highlights -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Why Mombasa Singles Love Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Features that make dating in Mombasa enjoyable and successful</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-8 transition-all duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Mobile Optimized</h3>
+                    <p class="text-gray-600">Access our platform seamlessly on any device. Our mobile-first design ensures you can connect wherever you are in Mombasa.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-8 transition-all duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Multilingual Support</h3>
+                    <p class="text-gray-600">Available in English and Swahili to cater to all Mombasa residents. Switch languages with one tap.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-8 transition-all duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Instant Notifications</h3>
+                    <p class="text-gray-600">Get real-time alerts for new matches, messages, and event reminders so you never miss a connection.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-8 transition-all duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Advanced Filters</h3>
+                    <p class="text-gray-600">Narrow down matches by location, interests, religion, and more to find exactly what you're looking for.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-8 transition-all duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Premium Features</h3>
+                    <p class="text-gray-600">Unlock additional benefits like seeing who viewed your profile and boosting your visibility.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-gray-50 rounded-xl p-8 transition-all duration-300">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center text-white text-2xl mb-6">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Daily Refreshes</h3>
+                    <p class="text-gray-600">New potential matches added daily so you always have fresh options to explore.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Gallery -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Platform Screenshots</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">See what the Mombasa Sweetheartness experience looks like</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="screenshot-container">
+                    <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Home Screen" class="screenshot w-full rounded-lg border border-gray-200 hover:border-pink-400">
+                </div>
+                <div class="screenshot-container">
+                    <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Match Screen" class="screenshot w-full rounded-lg border border-gray-200 hover:border-pink-400">
+                </div>
+                <div class="screenshot-container">
+                    <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Chat Screen" class="screenshot w-full rounded-lg border border-gray-200 hover:border-pink-400">
+                </div>
+                <div class="screenshot-container">
+                    <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Profile Screen" class="screenshot w-full rounded-lg border border-gray-200 hover:border-pink-400">
+                </div>
+                <div class="screenshot-container">
+                    <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Discover Screen" class="screenshot w-full rounded-lg border border-gray-200 hover:border-pink-400">
+                </div>
+                <div class="screenshot-container">
+                    <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Events Screen" class="screenshot w-full rounded-lg border border-gray-200 hover:border-pink-400">
+                </div>
+                <div class="screenshot-container">
+                    <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Settings Screen" class="screenshot w-full rounded-lg border border-gray-200 hover:border-pink-400">
+                </div>
+                <div class="screenshot-container">
+                    <img src="https://cdn.dribbble.com/users/1787323/screenshots/14267676/media/1e6a0a1f5a6d8e5e8d6e5e8d6e5e8d6e.png" alt="Premium Screen" class="screenshot w-full rounded-lg border border-gray-200 hover:border-pink-400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Love Story?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join Mombasa's most trusted dating platform today</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="signup.html" class="bg-white text-pink-600 px-8 py-4 rounded-full font-bold hover:bg-pink-50 text-lg">Sign Up Free</a>
+                <a href="#" class="border-2 border-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-pink-600 text-lg">Take Another Tour</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-heart text-2xl text-pink-500"></i>
+                        <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+                    </div>
+                    <p class="text-gray-400">Connecting singles in Mombasa since 2020. Our mission is to help you find meaningful relationships.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">How It Works</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Success Stories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Dating Tips</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Safety Guidelines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Email: hello@mombasasweetheartness.co.ke</p>
+                    <p class="text-gray-400">Phone: +254 700 123456</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Mombasa Sweetheartness. Developed by Charles Obuya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and tab contents
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.remove('text-white');
+                    btn.classList.add('border-pink-500');
+                });
+                
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                button.classList.add('text-white');
+                button.classList.remove('border-pink-500');
+                
+                // Show corresponding tab content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+
+        // Screenshot hover effect
+        document.querySelectorAll('.screenshot').forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                img.classList.add('shadow-lg');
+                img.classList.add('border-pink-400');
+            });
+            
+            img.addEventListener('mouseleave', () => {
+                img.classList.remove('shadow-lg');
+                img.classList.remove('border-pink-400');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
