@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mombasa Sweetheartness - Sign Up & Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+        }
+        .auth-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .auth-tab {
+            transition: all 0.3s ease;
+        }
+        .auth-tab.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .form-input:focus {
+            box-shadow: 0 0 0 2px rgba(247, 37, 133, 0.5);
+        }
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-heart text-2xl"></i>
+                <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="border border-white px-4 py-2 rounded-full hover:bg-white hover:text-pink-600">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="auth-container bg-white rounded-xl shadow-xl overflow-hidden w-full">
+            <div class="md:flex">
+                <!-- Left Side - Image -->
+                <div class="hidden md:block md:w-1/2 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');">
+                    <div class="h-full w-full bg-black bg-opacity-40 flex items-center justify-center p-8">
+                        <div class="text-white text-center">
+                            <h2 class="text-3xl font-bold mb-4">Find Your Perfect Match</h2>
+                            <p class="text-lg mb-6">Join thousands of singles in Mombasa looking for love, friendship, or meaningful connections.</p>
+                            <div class="flex justify-center space-x-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold">10,000+</div>
+                                    <div class="text-sm">Active Members</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold">500+</div>
+                                    <div class="text-sm">Success Stories</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Auth Forms -->
+                <div class="w-full md:w-1/2 p-8">
+                    <!-- Tabs -->
+                    <div class="flex border-b border-gray-200 mb-8">
+                        <button id="login-tab" class="auth-tab active py-2 px-4 font-medium text-pink-600 border-b-2 border-pink-600">Login</button>
+                        <button id="signup-tab" class="auth-tab py-2 px-4 font-medium text-gray-500 hover:text-pink-600">Sign Up</button>
+                    </div>
+                    
+                    <!-- Login Form -->
+                    <div id="login-form" class="auth-content">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Welcome Back!</h2>
+                        
+                        <!-- Social Login -->
+                        <div class="mb-6">
+                            <p class="text-center text-gray-600 mb-4">Login with social account</p>
+                            <div class="flex justify-center space-x-4">
+                                <button class="social-btn w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                                <button class="social-btn w-12 h-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600">
+                                    <i class="fab fa-google"></i>
+                                </button>
+                                <button class="social-btn w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800">
+                                    <i class="fab fa-apple"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center my-6">
+                            <div class="flex-grow border-t border-gray-300"></div>
+                            <span class="mx-4 text-gray-500">or</span>
+                            <div class="flex-grow border-t border-gray-300"></div>
+                        </div>
+                        
+                        <!-- Email Login -->
+                        <form id="login-email-form">
+                            <div class="mb-4">
+                                <label for="login-email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" id="login-email" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="your@email.com" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="login-password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                                <input type="password" id="login-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
+                            </div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="remember-me" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded">
+                                    <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                                </div>
+                                <a href="#" class="text-sm text-pink-600 hover:underline">Forgot password?</a>
+                            </div>
+                            <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 mb-4">Login</button>
+                        </form>
+                        
+                        <p class="text-center text-gray-600">
+                            Don't have an account? 
+                            <a href="#" id="switch-to-signup" class="text-pink-600 font-medium hover:underline">Sign up</a>
+                        </p>
+                    </div>
+                    
+                    <!-- Signup Form -->
+                    <div id="signup-form" class="auth-content hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Create Your Account</h2>
+                        
+                        <!-- Social Signup -->
+                        <div class="mb-6">
+                            <p class="text-center text-gray-600 mb-4">Sign up with social account</p>
+                            <div class="flex justify-center space-x-4">
+                                <button class="social-btn w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                                <button class="social-btn w-12 h-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600">
+                                    <i class="fab fa-google"></i>
+                                </button>
+                                <button class="social-btn w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800">
+                                    <i class="fab fa-apple"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center my-6">
+                            <div class="flex-grow border-t border-gray-300"></div>
+                            <span class="mx-4 text-gray-500">or</span>
+                            <div class="flex-grow border-t border-gray-300"></div>
+                        </div>
+                        
+                        <!-- Email Signup -->
+                        <form id="signup-email-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="signup-firstname" class="block text-gray-700 text-sm font-medium mb-2">First Name</label>
+                                    <input type="text" id="signup-firstname" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="John" required>
+                                </div>
+                                <div>
+                                    <label for="signup-lastname" class="block text-gray-700 text-sm font-medium mb-2">Last Name</label>
+                                    <input type="text" id="signup-lastname" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="signup-email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" id="signup-email" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="your@email.com" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="signup-phone" class="block text-gray-700 text-sm font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="signup-phone" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="+254 700 000000" required>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="signup-password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                                    <input type="password" id="signup-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
+                                </div>
+                                <div>
+                                    <label for="signup-confirm-password" class="block text-gray-700 text-sm font-medium mb-2">Confirm Password</label>
+                                    <input type="password" id="signup-confirm-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="signup-gender" class="block text-gray-700 text-sm font-medium mb-2">I am a</label>
+                                <select id="signup-gender" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Man looking for a woman</option>
+                                    <option value="female">Woman looking for a man</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <input type="checkbox" id="terms" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded" required>
+                                    </div>
+                                    <div class="ml-3 text-sm">
+                                        <label for="terms" class="text-gray-700">I agree to the <a href="#" class="text-pink-600 hover:underline">Terms of Service</a> and <a href="#" class="text-pink-600 hover:underline">Privacy Policy</a></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 mb-4">Create Account</button>
+                        </form>
+                        
+                        <p class="text-center text-gray-600">
+                            Already have an account? 
+                            <a href="#" id="switch-to-login" class="text-pink-600 font-medium hover:underline">Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-heart text-2xl text-pink-500"></i>
+                    <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Help</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Mombasa Sweetheartness. Developed by Charles Obuya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.getElementById('login-tab').addEventListener('click', function() {
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('login-tab').classList.add('active', 'text-pink-600', 'border-pink-600');
+            document.getElementById('login-tab').classList.remove('text-gray-500');
+            document.getElementById('signup-tab').classList.remove('active', 'text-pink-600', 'border-pink-600');
+            document.getElementById('signup-tab').classList.add('text-gray-500');
+        });
+
+        document.getElementById('signup-tab').addEventListener('click', function() {
+            document.getElementById('signup-form').classList.remove('hidden');
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('signup-tab').classList.add('active', 'text-pink-600', 'border-pink-600');
+            document.getElementById('signup-tab').classList.remove('text-gray-500');
+            document.getElementById('login-tab').classList.remove('active', 'text-pink-600', 'border-pink-600');
+            document.getElementById('login-tab').classList.add('text-gray-500');
+        });
+
+        // Switch between forms
+        document.getElementById('switch-to-signup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('signup-tab').click();
+        });
+
+        document.getElementById('switch-to-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-tab').click();
+        });
+
+        // Form submission
+        document.getElementById('login-email-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally handle the login logic
+            alert('Login functionality would be implemented here');
+            // Redirect to home page after successful login
+            // window.location.href = 'index.html';
+        });
+
+        document.getElementById('signup-email-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally handle the signup logic
+            alert('Account created successfully! Redirecting to profile setup...');
+            // Redirect to profile setup after successful signup
+            // window.location.href = 'profile-setup.html';
+        });
+
+        // Password validation
+        const password = document.getElementById('signup-password');
+        const confirmPassword = document.getElementById('signup-confirm-password');
+
+        function validatePassword() {
+            if(password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Passwords don't match");
+            } else {
+                confirmPassword.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirmPassword.onkeyup = validatePassword;
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mombasa Sweetheartness - Sign Up & Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+        }
+        .auth-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .auth-tab {
+            transition: all 0.3s ease;
+        }
+        .auth-tab.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .form-input:focus {
+            box-shadow: 0 0 0 2px rgba(247, 37, 133, 0.5);
+        }
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-heart text-2xl"></i>
+                <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="border border-white px-4 py-2 rounded-full hover:bg-white hover:text-pink-600">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="auth-container bg-white rounded-xl shadow-xl overflow-hidden w-full">
+            <div class="md:flex">
+                <!-- Left Side - Image -->
+                <div class="hidden md:block md:w-1/2 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');">
+                    <div class="h-full w-full bg-black bg-opacity-40 flex items-center justify-center p-8">
+                        <div class="text-white text-center">
+                            <h2 class="text-3xl font-bold mb-4">Find Your Perfect Match</h2>
+                            <p class="text-lg mb-6">Join thousands of singles in Mombasa looking for love, friendship, or meaningful connections.</p>
+                            <div class="flex justify-center space-x-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold">10,000+</div>
+                                    <div class="text-sm">Active Members</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold">500+</div>
+                                    <div class="text-sm">Success Stories</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Auth Forms -->
+                <div class="w-full md:w-1/2 p-8">
+                    <!-- Tabs -->
+                    <div class="flex border-b border-gray-200 mb-8">
+                        <button id="login-tab" class="auth-tab active py-2 px-4 font-medium text-pink-600 border-b-2 border-pink-600">Login</button>
+                        <button id="signup-tab" class="auth-tab py-2 px-4 font-medium text-gray-500 hover:text-pink-600">Sign Up</button>
+                    </div>
+                    
+                    <!-- Login Form -->
+                    <div id="login-form" class="auth-content">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Welcome Back!</h2>
+                        
+                        <!-- Social Login -->
+                        <div class="mb-6">
+                            <p class="text-center text-gray-600 mb-4">Login with social account</p>
+                            <div class="flex justify-center space-x-4">
+                                <button class="social-btn w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                                <button class="social-btn w-12 h-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600">
+                                    <i class="fab fa-google"></i>
+                                </button>
+                                <button class="social-btn w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800">
+                                    <i class="fab fa-apple"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center my-6">
+                            <div class="flex-grow border-t border-gray-300"></div>
+                            <span class="mx-4 text-gray-500">or</span>
+                            <div class="flex-grow border-t border-gray-300"></div>
+                        </div>
+                        
+                        <!-- Email Login -->
+                        <form id="login-email-form">
+                            <div class="mb-4">
+                                <label for="login-email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" id="login-email" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="your@email.com" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="login-password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                                <input type="password" id="login-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
+                            </div>
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="remember-me" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded">
+                                    <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                                </div>
+                                <a href="#" class="text-sm text-pink-600 hover:underline">Forgot password?</a>
+                            </div>
+                            <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 mb-4">Login</button>
+                        </form>
+                        
+                        <p class="text-center text-gray-600">
+                            Don't have an account? 
+                            <a href="#" id="switch-to-signup" class="text-pink-600 font-medium hover:underline">Sign up</a>
+                        </p>
+                    </div>
+                    
+                    <!-- Signup Form -->
+                    <div id="signup-form" class="auth-content hidden">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Create Your Account</h2>
+                        
+                        <!-- Social Signup -->
+                        <div class="mb-6">
+                            <p class="text-center text-gray-600 mb-4">Sign up with social account</p>
+                            <div class="flex justify-center space-x-4">
+                                <button class="social-btn w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                                <button class="social-btn w-12 h-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600">
+                                    <i class="fab fa-google"></i>
+                                </button>
+                                <button class="social-btn w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800">
+                                    <i class="fab fa-apple"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center my-6">
+                            <div class="flex-grow border-t border-gray-300"></div>
+                            <span class="mx-4 text-gray-500">or</span>
+                            <div class="flex-grow border-t border-gray-300"></div>
+                        </div>
+                        
+                        <!-- Email Signup -->
+                        <form id="signup-email-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="signup-firstname" class="block text-gray-700 text-sm font-medium mb-2">First Name</label>
+                                    <input type="text" id="signup-firstname" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="John" required>
+                                </div>
+                                <div>
+                                    <label for="signup-lastname" class="block text-gray-700 text-sm font-medium mb-2">Last Name</label>
+                                    <input type="text" id="signup-lastname" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="signup-email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" id="signup-email" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="your@email.com" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="signup-phone" class="block text-gray-700 text-sm font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="signup-phone" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="+254 700 000000" required>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="signup-password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                                    <input type="password" id="signup-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
+                                </div>
+                                <div>
+                                    <label for="signup-confirm-password" class="block text-gray-700 text-sm font-medium mb-2">Confirm Password</label>
+                                    <input type="password" id="signup-confirm-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="signup-gender" class="block text-gray-700 text-sm font-medium mb-2">I am a</label>
+                                <select id="signup-gender" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Man looking for a woman</option>
+                                    <option value="female">Woman looking for a man</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex items-start">
+                                    <div class="flex items-center h-5">
+                                        <input type="checkbox" id="terms" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded" required>
+                                    </div>
+                                    <div class="ml-3 text-sm">
+                                        <label for="terms" class="text-gray-700">I agree to the <a href="#" class="text-pink-600 hover:underline">Terms of Service</a> and <a href="#" class="text-pink-600 hover:underline">Privacy Policy</a></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 mb-4">Create Account</button>
+                        </form>
+                        
+                        <p class="text-center text-gray-600">
+                            Already have an account? 
+                            <a href="#" id="switch-to-login" class="text-pink-600 font-medium hover:underline">Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-heart text-2xl text-pink-500"></i>
+                    <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white">Terms</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Help</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Mombasa Sweetheartness. Developed by Charles Obuya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.getElementById('login-tab').addEventListener('click', function() {
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('login-tab').classList.add('active', 'text-pink-600', 'border-pink-600');
+            document.getElementById('login-tab').classList.remove('text-gray-500');
+            document.getElementById('signup-tab').classList.remove('active', 'text-pink-600', 'border-pink-600');
+            document.getElementById('signup-tab').classList.add('text-gray-500');
+        });
+
+        document.getElementById('signup-tab').addEventListener('click', function() {
+            document.getElementById('signup-form').classList.remove('hidden');
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('signup-tab').classList.add('active', 'text-pink-600', 'border-pink-600');
+            document.getElementById('signup-tab').classList.remove('text-gray-500');
+            document.getElementById('login-tab').classList.remove('active', 'text-pink-600', 'border-pink-600');
+            document.getElementById('login-tab').classList.add('text-gray-500');
+        });
+
+        // Switch between forms
+        document.getElementById('switch-to-signup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('signup-tab').click();
+        });
+
+        document.getElementById('switch-to-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-tab').click();
+        });
+
+        // Form submission
+        document.getElementById('login-email-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally handle the login logic
+            alert('Login functionality would be implemented here');
+            // Redirect to home page after successful login
+            // window.location.href = 'index.html';
+        });
+
+        document.getElementById('signup-email-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally handle the signup logic
+            alert('Account created successfully! Redirecting to profile setup...');
+            // Redirect to profile setup after successful signup
+            // window.location.href = 'profile-setup.html';
+        });
+
+        // Password validation
+        const password = document.getElementById('signup-password');
+        const confirmPassword = document.getElementById('signup-confirm-password');
+
+        function validatePassword() {
+            if(password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Passwords don't match");
+            } else {
+                confirmPassword.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirmPassword.onkeyup = validatePassword;
+    </script>
+</body>
+</html>
