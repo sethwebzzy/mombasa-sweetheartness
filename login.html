@@ -267,28 +267,28 @@
                             <div>
                                 <div class="flex justify-between mb-1">
                                     <span class="text-gray-700">Profile Completeness</span>
-                                    <span class="text-pink-600 font-medium">60%</span>
+                                    <span id="completeness-percent"class="text-pink-600 font-medium">60%</span>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="gradient-bg h-2.5 rounded-full" style="width: 60%"></div>
+                                    <div class="gradient-bg h-2.5 rounded-full" id="completeness-bar" style="width: 60%"></div>
                                 </div>
                             </div>
                             <div>
                                 <div class="flex justify-between mb-1">
                                     <span class="text-gray-700">Matches Found</span>
-                                    <span class="text-pink-600 font-medium">12</span>
+                                    <span id="completeness-percent"class="text-pink-600 font-medium">12</span>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="gradient-bg h-2.5 rounded-full" style="width: 30%"></div>
+                                    <div class="gradient-bg h-2.5 rounded-full" id="completeness-bar" style="width: 30%"></div>
                                 </div>
                             </div>
                             <div>
                                 <div class="flex justify-between mb-1">
                                     <span class="text-gray-700">Messages Sent</span>
-                                    <span class="text-pink-600 font-medium">8</span>
+                                    <span id="completeness-percent"class="text-pink-600 font-medium">8</span>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="gradient-bg h-2.5 rounded-full" style="width: 20%"></div>
+                                    <div class="gradient-bg h-2.5 rounded-full" id="completeness-bar" style="width: 20%"></div>
                                 </div>
                             </div>
                         </div>
@@ -565,6 +565,19 @@
             document.getElementById('profile-email').textContent = user.email;
             document.getElementById('profile-phone').textContent = user.phone;
             document.getElementById('member-since').textContent = user.joinDate;
+
+            // Update Profile Completeness
+            const complete = user.profileCompleted ? 100 : 60;
+            document.getElementById('completeness-percent').textContent = `${complete}%`;
+            document.getElementById('completeness-bar').style.width = `${complete}%`;
+
+           // Update Matches Found & Messages Sent - Simulated for now
+           const matches = user.profileCompleted ? 22 : 12;
+           const messages = user.profileCompleted ? 14 : 8;
+
+           document.getElementById('matches-found').textContent = matches;
+           document.getElementById('messages-sent').textContent = messages;
+
             
             // Set gender text
             let genderText = '';
