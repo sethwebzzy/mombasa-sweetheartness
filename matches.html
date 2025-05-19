@@ -1,23 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matches | Mombasa Sweetheartness</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mombasa Sweetheartness - Your Matches</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+        }
+        .auth-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .auth-tab {
+            transition: all 0.3s ease;
+        }
+        .auth-tab.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .form-input:focus {
+            box-shadow: 0 0 0 2px rgba(247, 37, 133, 0.5);
+        }
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+        .dashboard-card {
+            transition: all 0.3s ease;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
   <div class="max-w-6xl mx-auto p-6">
     <h1 class="text-3xl font-bold text-pink-600 mb-6">Your Matches</h1>
     <div class="grid md:grid-cols-3 gap-6" id="match-grid"></div>
+    <button onclick="openChat('Lilian')" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Message</button>
   </div>
 
   <script>
     const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
     const sampleUsers = [
-      { name: 'Lilian', age: 27, location: 'Mombasa', interests: ['Beach', 'Music'], photo: './public/2.jpg' },
-      { name: 'Brian', age: 32, location: 'Nairobi', interests: ['Tech', 'Movies'], photo: './public/2.jpg' },
-      { name: 'Sasha', age: 25, location: 'Kisumu', interests: ['Fitness', 'Travel'], photo: './public/2.jpg' },
+      { name: 'Lilian', age: 27, location: 'Mombasa', interests: ['Beach', 'Music'], photo: './public/11.jpg' },
+      { name: 'Fezziah', age: 25, location: 'Mombasa', interests: ['Tech', 'Movies'], photo: './public/1.jpg' },
+      { name: 'Sasha', age: 25, location: 'Mombasa', interests: ['Fitness', 'Travel'], photo: './public/8.jpg' },
     ];
 
     function matchPercentage(user) {

@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Settings | Mombasa Sweetheartness</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mombasa Sweetheartness - Settings & Safety</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
+        }
+        .auth-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .auth-tab {
+            transition: all 0.3s ease;
+        }
+        .auth-tab.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .form-input:focus {
+            box-shadow: 0 0 0 2px rgba(247, 37, 133, 0.5);
+        }
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+        .dashboard-card {
+            transition: all 0.3s ease;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans">
   <div class="max-w-2xl mx-auto py-12 px-6 bg-white mt-10 rounded-lg shadow-lg">
@@ -38,7 +67,7 @@
       </div>
 
       <div class="flex justify-between items-center">
-        <a href="login.html" class="text-pink-600 font-medium hover:underline">← Back to Dashboard</a>
+        <a href="dashboard.html" class="text-pink-600 font-medium hover:underline">← Back to Dashboard</a>
         <button type="submit" class="bg-pink-600 text-white px-6 py-2 rounded-lg hover:bg-pink-700">Update Password</button>
       </div>
     </form>
