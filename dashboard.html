@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mombasa Sweetheartness | Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#f72585',
+            secondary: '#7209b7',
+            accent: '#b5179e',
+            background: '#f8f9fa'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-background min-h-screen font-sans">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-lg hidden md:block">
+      <div class="p-6 border-b">
+        <h2 class="text-xl font-bold text-primary">Mombasa Sweetheartness</h2>
+      </div>
+      <nav class="p-6 space-y-4">
+        <a href="dashboard.html" class="block text-gray-700 hover:text-primary font-medium">🏠 Dashboard</a>
+        <a href="profile.html" class="block text-gray-700 hover:text-primary font-medium">👤 My Profile</a>
+        <a href="matches.html" class="block text-gray-700 hover:text-primary font-medium">💘 Matches</a>
+        <a href="settings.html" class="block text-gray-700 hover:text-primary font-medium">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Top Bar -->
+      <header class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+        <h1 class="text-lg font-semibold text-primary">Dashboard</h1>
+        <button onclick="logout()" class="bg-primary text-white px-4 py-2 rounded hover:bg-pink-700">Logout</button>
+      </header>
+
+      <main class="flex-1 overflow-y-auto p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">Welcome back, <span id="username"></span> 👋</h2>
+        <p class="text-gray-500 mb-6">Here’s what’s happening with your account today.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
+            <h3 class="text-gray-600 text-sm font-medium mb-1">Profile Completeness</h3>
+            <div class="w-full bg-gray-200 rounded-full h-3">
+              <div id="completeness-bar" class="bg-primary h-3 rounded-full" style="width: 60%"></div>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Your profile is <span id="completeness-percent">60%</span> complete</p>
+            <a href="profile.html" class="text-sm text-primary hover:underline">Complete Now →</a>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
+            <h3 class="text-gray-600 text-sm font-medium mb-1">Matches Found</h3>
+            <p class="text-3xl font-bold text-secondary" id="match-count">12</p>
+            <p class="text-xs text-gray-500">People who matched with you</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
+            <h3 class="text-gray-600 text-sm font-medium mb-1">Messages Sent</h3>
+            <p class="text-3xl font-bold text-accent" id="message-count">8</p>
+            <p class="text-xs text-gray-500">Conversations started</p>
+          </div>
+        </div>
+
+        <div class="mt-10 bg-white rounded-xl p-6 shadow">
+          <h4 class="text-lg font-semibold mb-4 text-gray-800">Your Profile Info</h4>
+          <ul class="text-gray-700 space-y-1">
+            <li><strong>Name:</strong> <span id="user-name"></span></li>
+            <li><strong>Email:</strong> <span id="user-email"></span></li>
+            <li><strong>Joined:</strong> <span id="user-joined"></span></li>
+          </ul>
+        </div>
+
+        <!-- Recent Matches & Messages Feed -->
+        <div class="mt-10">
+          <h4 class="text-lg font-semibold mb-4 text-gray-800">Recent Matches & Messages</h4>
+          <div class="bg-white rounded-lg shadow divide-y">
+            <div class="p-4 flex items-center justify-between">
+              <div>
+                <p class="font-medium text-gray-800">Lilian</p>
+                <p class="text-sm text-gray-500">"Hey there 👋 Just matched with you!"</p>
+              </div>
+              <button onclick="openChat('Lilian')" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Message</button>
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div>
+                <p class="font-medium text-gray-800">David</p>
+                <p class="text-sm text-gray-500">"Nice to meet you ✨"</p>
+              </div>
+              <button onclick="openChat('David')" class="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Message</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Modal -->
+        <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+          <div class="bg-white w-full max-w-md rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 border-b flex justify-between items-center">
+              <h3 class="text-lg font-bold text-primary" id="chat-with">Chat</h3>
+              <button onclick="closeChat()" class="text-gray-400 hover:text-gray-600">✖</button>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto bg-gray-50" id="chat-messages">
+              <p class="text-gray-600 text-sm">Say hello and start the conversation 🗨️</p>
+            </div>
+            <div class="p-4 border-t flex">
+              <input type="text" id="chat-input" class="flex-1 border border-gray-300 px-3 py-2 rounded-l-lg focus:outline-none" placeholder="Type your message...">
+              <button onclick="sendMessage()" class="bg-pink-600 text-white px-4 py-2 rounded-r-lg hover:bg-pink-700">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+          <!-- Premium Membership -->
+                <div class="bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold mb-2">Upgrade to Premium</h3>
+                            <p class="opacity-90">Get unlimited matches, see who liked you, and boost your profile!</p>
+                        </div>
+                        <button onclick="window.location.href='https://flutterwave.com/pay/mombasapremium'" class="px-6 py-2 bg-white text-pink-600 rounded-lg font-bold hover:bg-opacity-90">
+                            Upgrade Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (!user) window.location.href = 'login.html';
+    else {
+      document.getElementById('username').textContent = user.name;
+      document.getElementById('user-name').textContent = user.name;
+      document.getElementById('user-email').textContent = user.email;
+      document.getElementById('user-joined').textContent = user.joinDate || 'Today';
+
+      const complete = user.profileCompleted ? 100 : 60;
+      document.getElementById('completeness-bar').style.width = complete + '%';
+      document.getElementById('completeness-percent').textContent = complete + '%';
+
+      const matches = user.profileCompleted ? 22 : 12;
+      const messages = user.profileCompleted ? 14 : 8;
+      document.getElementById('match-count').textContent = matches;
+      document.getElementById('message-count').textContent = messages;
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      window.location.href = 'login.html';
+    }
+
+    function openChat(name) {
+      document.getElementById('chat-modal').classList.remove('hidden');
+      document.getElementById('chat-with').textContent = `Chat with ${name}`;
+      document.getElementById('chat-messages').innerHTML = `<p class='text-gray-600 text-sm'>Say hello to <strong>${name}</strong> and start chatting 🗨️</p>`;
+    }
+
+    function closeChat() {
+      document.getElementById('chat-modal').classList.add('hidden');
+      document.getElementById('chat-input').value = '';
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const msg = input.value.trim();
+      if (msg) {
+        const div = document.createElement('div');
+        div.className = 'text-right mb-2';
+        div.innerHTML = `<span class='inline-block bg-pink-600 text-white px-3 py-1 rounded-lg text-sm'>${msg}</span>`;
+        document.getElementById('chat-messages').appendChild(div);
+        input.value = '';
+      }
+    }
+  </script>
+</body>
+</html>

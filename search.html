@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search | Mombasa Sweetheartness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="max-w-6xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-pink-600 mb-6">Search Singles</h1>
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <form id="search-form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Age Range</label>
+          <input type="range" min="18" max="60" value="30" class="w-full" id="age-range">
+          <span class="text-xs text-gray-500">18 - <span id="age-value">35</span></span>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+          <input type="text" id="location" placeholder="E.g. Nairobi" class="w-full border border-gray-300 px-3 py-2 rounded">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Interests</label>
+          <input type="text" id="interests" placeholder="e.g. Music, Travel" class="w-full border border-gray-300 px-3 py-2 rounded">
+        </div>
+        <div class="md:col-span-3 text-right">
+          <button type="submit" class="bg-pink-600 text-white px-6 py-2 rounded hover:bg-pink-700">Search</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="results" class="grid md:grid-cols-3 gap-6"></div>
+  </div>
+
+  <script>
+    const ageSlider = document.getElementById('age-range');
+    const ageValue = document.getElementById('age-value');
+    ageSlider.addEventListener('input', () => ageValue.textContent = ageSlider.value);
+
+    const sampleUsers = [
+      { name: 'Lilian', age: 27, location: 'Mombasa', interests: 'Beach, Music', photo: './public/2.jpg' },
+      { name: 'Brian', age: 32, location: 'Nairobi', interests: 'Tech, Movies', photo: './public/2.jpg' },
+      { name: 'Sasha', age: 25, location: 'Kisumu', interests: 'Fitness, Travel', photo: './public/2.jpg' },
+    ];
+
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const age = parseInt(ageSlider.value);
+      const location = document.getElementById('location').value.toLowerCase();
+      const interests = document.getElementById('interests').value.toLowerCase();
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+
+      const filtered = sampleUsers.filter(user =>
+        user.age <= age &&
+        user.location.toLowerCase().includes(location) &&
+        user.interests.toLowerCase().includes(interests)
+      );
+
+      if (filtered.length === 0) {
+        resultsDiv.innerHTML = '<p class="text-gray-500">No matches found.</p>';
+        return;
+      }
+
+      filtered.forEach(user => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-4 rounded shadow text-center';
+        card.innerHTML = `
+          <img src="${user.photo}" class="w-full h-48 object-cover rounded mb-3" alt="${user.name}">
+          <h3 class="text-lg font-semibold text-pink-600">${user.name}</h3>
+          <p class="text-sm text-gray-600">Age: ${user.age}</p>
+          <p class="text-sm text-gray-600">Location: ${user.location}</p>
+          <p class="text-sm text-gray-600">Interests: ${user.interests}</p>
+          <button class="mt-3 bg-pink-600 text-white px-4 py-1 rounded hover:bg-pink-700">View Profile</button>
+        `;
+        resultsDiv.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>

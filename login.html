@@ -1,408 +1,88 @@
+<!-- login.html - Updated to support dashboard redirect, email check, and social login simulation -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mombasa Sweetheartness - Sign Up & Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);
-        }
-        .auth-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .auth-tab {
-            transition: all 0.3s ease;
-        }
-        .auth-tab.active {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        .form-input:focus {
-            box-shadow: 0 0 0 2px rgba(247, 37, 133, 0.5);
-        }
-        .social-btn:hover {
-            transform: translateY(-2px);
-        }
-        .dashboard-card {
-            transition: all 0.3s ease;
-        }
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mombasa Sweetheartness - Login & Sign Up</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body class="bg-gray-100 font-sans">
-    <!-- Navigation -->
-    <nav class="gradient-bg text-white shadow-lg">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-heart text-2xl"></i>
-                <span class="text-xl font-bold">Mombasa Sweetheartness</span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="#" id="home-link" class="border border-white px-4 py-2 rounded-full hover:bg-white hover:text-pink-600">Back to Home</a>
-                <a href="#" id="logout-link" class="hidden border border-white px-4 py-2 rounded-full hover:bg-white hover:text-pink-600">Logout</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content Area -->
-    <div id="content-area">
-        <!-- Auth Container (shown by default) -->
-        <div id="auth-container" class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div class="auth-container bg-white rounded-xl shadow-xl overflow-hidden w-full">
-                <div class="md:flex">
-                    <!-- Left Side - Image -->
-                    <div class="hidden md:block md:w-1/2 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');">
-                        <div class="h-full w-full bg-black bg-opacity-40 flex items-center justify-center p-8">
-                            <div class="text-white text-center">
-                                <h2 class="text-3xl font-bold mb-4">Find Your Perfect Match</h2>
-                                <p class="text-lg mb-6">Join thousands of singles in Mombasa looking for love, friendship, or meaningful connections.</p>
-                                <div class="flex justify-center space-x-4">
-                                    <div class="text-center">
-                                        <div class="text-2xl font-bold">10,000+</div>
-                                        <div class="text-sm">Active Members</div>
-                                    </div>
-                                    <div class="text-center">
-                                        <div class="text-2xl font-bold">500+</div>
-                                        <div class="text-sm">Success Stories</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Side - Auth Forms -->
-                    <div class="w-full md:w-1/2 p-8">
-                        <!-- Tabs -->
-                        <div class="flex border-b border-gray-200 mb-8">
-                            <button id="login-tab" class="auth-tab active py-2 px-4 font-medium text-pink-600 border-b-2 border-pink-600">Login</button>
-                            <button id="signup-tab" class="auth-tab py-2 px-4 font-medium text-gray-500 hover:text-pink-600">Sign Up</button>
-                        </div>
-                        
-                        <!-- Login Form -->
-                        <div id="login-form" class="auth-content">
-                            <h2 class="text-2xl font-bold text-gray-800 mb-6">Welcome Back!</h2>
-                            
-                            <!-- Social Login -->
-                            <div class="mb-6">
-                                <p class="text-center text-gray-600 mb-4">Login with social account</p>
-                                <div class="flex justify-center space-x-4">
-                                    <button class="social-btn w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </button>
-                                    <button class="social-btn w-12 h-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600">
-                                        <i class="fab fa-google"></i>
-                                    </button>
-                                    <button class="social-btn w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800">
-                                        <i class="fab fa-apple"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center my-6">
-                                <div class="flex-grow border-t border-gray-300"></div>
-                                <span class="mx-4 text-gray-500">or</span>
-                                <div class="flex-grow border-t border-gray-300"></div>
-                            </div>
-                            
-                            <!-- Email Login -->
-                            <form id="login-email-form">
-                                <div class="mb-4">
-                                    <label for="login-email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
-                                    <input type="email" id="login-email" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="your@email.com" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="login-password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
-                                    <input type="password" id="login-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
-                                </div>
-                                <div class="flex items-center justify-between mb-6">
-                                    <div class="flex items-center">
-                                        <input type="checkbox" id="remember-me" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded">
-                                        <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
-                                    </div>
-                                    <a href="#" class="text-sm text-pink-600 hover:underline">Forgot password?</a>
-                                </div>
-                                <button type="submit" class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 mb-4">Login</button>
-                            </form>
-                            
-                            <p class="text-center text-gray-600">
-                                Don't have an account? 
-                                <a href="#" id="switch-to-signup" class="text-pink-600 font-medium hover:underline">Sign up</a>
-                            </p>
-                        </div>
-                        
-                        <!-- Signup Form -->
-                        <div id="signup-form" class="auth-content hidden">
-                            <h2 class="text-2xl font-bold text-gray-800 mb-6">Create Your Account</h2>
-                            
-                            <!-- Social Signup -->
-                            <div class="mb-6">
-                                <p class="text-center text-gray-600 mb-4">Sign up with social account</p>
-                                <div class="flex justify-center space-x-4">
-                                    <button class="social-btn w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </button>
-                                    <button class="social-btn w-12 h-12 rounded-full bg-red-500 text-white flex items-center justify-center hover:bg-red-600">
-                                        <i class="fab fa-google"></i>
-                                    </button>
-                                    <button class="social-btn w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800">
-                                        <i class="fab fa-apple"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center my-6">
-                                <div class="flex-grow border-t border-gray-300"></div>
-                                <span class="mx-4 text-gray-500">or</span>
-                                <div class="flex-grow border-t border-gray-300"></div>
-                            </div>
-                            
-                            <!-- Email Signup -->
-                            <form id="signup-email-form">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    <div>
-                                        <label for="signup-firstname" class="block text-gray-700 text-sm font-medium mb-2">First Name</label>
-                                        <input type="text" id="signup-firstname" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="John" required>
-                                    </div>
-                                    <div>
-                                        <label for="signup-lastname" class="block text-gray-700 text-sm font-medium mb-2">Last Name</label>
-                                        <input type="text" id="signup-lastname" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="Doe" required>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="signup-email" class="block text-gray-700 text-sm font-medium mb-2">Email Address</label>
-                                    <input type="email" id="signup-email" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="your@email.com" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="signup-phone" class="block text-gray-700 text-sm font-medium mb-2">Phone Number</label>
-                                    <input type="tel" id="signup-phone" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="+254 700 000000" required>
-                                </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    <div>
-                                        <label for="signup-password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
-                                        <input type="password" id="signup-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
-                                    </div>
-                                    <div>
-                                        <label for="signup-confirm-password" class="block text-gray-700 text-sm font-medium mb-2">Confirm Password</label>
-                                        <input type="password" id="signup-confirm-password" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" placeholder="••••••••" required>
-                                    </div>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="signup-gender" class="block text-gray-700 text-sm font-medium mb-2">I am a</label>
-                                    <select id="signup-gender" class="form-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500" required>
-                                        <option value="">Select Gender</option>
-                                        <option value="male">Man looking for a woman</option>
-                                        <option value="female">Woman looking for a man</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                <div class="mb-6">
-                                    <div class="flex items-start">
-                                        <div class="flex items-center h-5">
-                                            <input type="checkbox" id="terms" class="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded" required>
-                                        </div>
-                                        <div class="ml-3 text-sm">
-                                            <label for="terms" class="text-gray-700">I agree to the <a href="#" class="text-pink-600 hover:underline">Terms of Service</a> and <a href="#" class="text-pink-600 hover:underline">Privacy Policy</a></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="dashboard-container" class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 mb-4">Create Account</button>
-                            </form>
-                            
-                            <p class="text-center text-gray-600">
-                                Already have an account? 
-                                <a href="#" id="switch-to-login" class="text-pink-600 font-medium hover:underline">Login</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Dashboard Container (hidden by default) -->
-        <div id="dashboard-container" class="hidden min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-12">
-                    <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Your Dashboard</h1>
-                    <p class="text-xl text-gray-600">Manage your account and find your perfect match</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <!-- Profile Card -->
-                    <div class="dashboard-card bg-white rounded-xl shadow-lg p-6">
-                        <div class="flex items-center mb-4">
-                            <div class="w-16 h-16 rounded-full gradient-bg flex items-center justify-center text-white text-2xl font-bold mr-4" id="profile-initials">
-                                JD
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800" id="profile-name">John Doe</h3>
-                                <p class="text-gray-600" id="profile-gender">Man looking for a woman</p>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope text-pink-500 mr-3"></i>
-                                <span class="text-gray-700" id="profile-email">john.doe@example.com</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-phone text-pink-500 mr-3"></i>
-                                <span class="text-gray-700" id="profile-phone">+254 700 123456</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-user-shield text-pink-500 mr-3"></i>
-                                <span class="text-gray-700">Member since <span id="member-since">Today</span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Account Stats -->
-                    <div class="dashboard-card bg-white rounded-xl shadow-lg p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-6">Your Stats</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-gray-700">Profile Completeness</span>
-                                    <span id="completeness-percent"class="text-pink-600 font-medium">60%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="gradient-bg h-2.5 rounded-full" id="completeness-bar" style="width: 60%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-gray-700">Matches Found</span>
-                                    <span id="completeness-percent"class="text-pink-600 font-medium">12</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="gradient-bg h-2.5 rounded-full" id="completeness-bar" style="width: 30%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-gray-700">Messages Sent</span>
-                                    <span id="completeness-percent"class="text-pink-600 font-medium">8</span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                    <div class="gradient-bg h-2.5 rounded-full" id="completeness-bar" style="width: 20%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="profile.html">
-                        <button class="w-full mt-6 gradient-bg text-white py-2 rounded-lg font-medium hover:opacity-90">
-                            Complete Your Profile
-                        </button>
-                        </a>
-                    </div>
-
-                    <!-- Quick Actions -->
-                    <div class="dashboard-card bg-white rounded-xl shadow-lg p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-6">Quick Actions</h3>
-                        <div class="space-y-3">
-                            <a href="profile.html" class="block w-full">
-                            <div class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                                <div class="flex items-center">
-                                    <i class="fas fa-user-edit text-pink-500 mr-3"></i>
-                                    <span>Edit Profile</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-gray-400"></i>
-                            </div>
-                            </a>
-                            <a href="settings.html" class="block w-full">
-                            <div class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                                <div class="flex items-center">
-                                    <i class="fas fa-lock text-pink-500 mr-3"></i>
-                                    <span>Change Password</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-gray-400"></i>
-                            </div>
-                            </a>
-                            <a href="notifications.html" class="block w-full">
-                            <div class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                                <div class="flex items-center">
-                                    <i class="fas fa-bell text-pink-500 mr-3"></i>
-                                    <span>Notification Settings</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-gray-400"></i>
-                            </div>
-                            </a>
-                            <a href="matches.html" class="block w-full">
-                            <div class="w-full flex items-center justify-between px-4 py-3 bg-gray-50 rounded-lg hover:bg-gray-100">
-                                <div class="flex items-center">
-                                    <i class="fas fa-heart text-pink-500 mr-3"></i>
-                                    <span>View Matches</span>
-                                </div>
-                                <i class="fas fa-chevron-right text-gray-400"></i>
-                            </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Activity -->
-                <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6">Recent Activity</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start pb-4 border-b border-gray-100">
-                            <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white text-sm font-bold mr-4 mt-1">
-                                JD
-                            </div>
-                            <div>
-                                <p class="text-gray-700"><span class="font-medium">You</span> updated your profile picture</p>
-                                <p class="text-sm text-gray-500">2 hours ago</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start pb-4 border-b border-gray-100">
-                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 text-sm font-bold mr-4 mt-1">
-                                <i class="fas fa-user-friends"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-700"><span class="font-medium">5 new members</span> joined who match your preferences</p>
-                                <p class="text-sm text-gray-500">Yesterday</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start pb-4 border-b border-gray-100">
-                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-500 text-sm font-bold mr-4 mt-1">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-700"><span class="font-medium">Sarah</span> liked your profile</p>
-                                <p class="text-sm text-gray-500">2 days ago</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-500 text-sm font-bold mr-4 mt-1">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <p class="text-gray-700"><span class="font-medium">Welcome</span> to Mombasa Sweetheartness! Complete your profile to get better matches</p>
-                                <p class="text-sm text-gray-500">1 week ago</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premium Membership -->
-                <div class="bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
-                    <div class="flex flex-col md:flex-row items-center justify-between">
-                        <div class="mb-4 md:mb-0">
-                            <h3 class="text-xl font-bold mb-2">Upgrade to Premium</h3>
-                            <p class="opacity-90">Get unlimited matches, see who liked you, and boost your profile!</p>
-                        </div>
-                        <button class="px-6 py-2 bg-white text-pink-600 rounded-lg font-bold hover:bg-opacity-90">
-                            Upgrade Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Navigation -->
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-heart text-2xl"></i>
+        <span class="text-xl font-bold">Mombasa Sweetheartness</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="index.html" class="border border-white px-4 py-2 rounded-full hover:bg-white hover:text-pink-600">Back to Home</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Footer -->
+  <!-- Main Content -->
+  <div class="min-h-screen flex items-center justify-center py-12 px-4">
+    <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-xl">
+      <div class="flex border-b mb-6">
+        <button id="login-tab" class="w-1/2 text-center font-semibold py-2 border-b-2 border-pink-600 text-pink-600">Login</button>
+        <button id="signup-tab" class="w-1/2 text-center font-semibold py-2 text-gray-500">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form">
+        <form id="login-email-form">
+          <div class="mb-4">
+            <label class="text-gray-700 block mb-1">Email</label>
+            <input type="email" id="login-email" required class="w-full border px-4 py-2 rounded" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700 block mb-1">Password</label>
+            <input type="password" id="login-password" required class="w-full border px-4 py-2 rounded" />
+          </div>
+          <button class="w-full bg-pink-600 text-white py-2 rounded">Login</button>
+        </form>
+        <p class="text-sm text-center mt-4 text-gray-500">
+          or login with
+        </p>
+        <div class="flex justify-center gap-4 mt-2">
+          <button onclick="fakeSocialLogin('facebook')" class="social-btn w-10 h-10 bg-blue-600 text-white rounded-full"><i class="fab fa-facebook-f"></i></button>
+          <button onclick="fakeSocialLogin('google')" class="social-btn w-10 h-10 bg-red-500 text-white rounded-full"><i class="fab fa-google"></i></button>
+          <button onclick="fakeSocialLogin('apple')" class="social-btn w-10 h-10 bg-black text-white rounded-full"><i class="fab fa-apple"></i></button>
+        </div>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signup-form" class="hidden">
+        <form id="signup-email-form">
+          <div class="mb-4">
+            <label class="text-gray-700 block mb-1">Full Name</label>
+            <input type="text" id="signup-name" required class="w-full border px-4 py-2 rounded" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700 block mb-1">Email</label>
+            <input type="email" id="signup-email" required class="w-full border px-4 py-2 rounded" />
+          </div>
+          <div class="mb-4">
+            <label class="text-gray-700 block mb-1">Password</label>
+            <input type="password" id="signup-password" required class="w-full border px-4 py-2 rounded" />
+          </div>
+          <button class="w-full bg-pink-600 text-white py-2 rounded">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Duplicate Email Modal -->
+  <div id="email-exists-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg shadow-xl text-center">
+      <h2 class="text-lg font-bold mb-2 text-pink-600">Email Already Exists</h2>
+      <p class="text-gray-700 mb-4">An account with this email already exists. Please log in instead.</p>
+      <button onclick="closeModal()" class="px-4 py-2 bg-pink-600 text-white rounded">OK</button>
+    </div>
+  </div>
+  <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -411,9 +91,9 @@
                     <span class="text-xl font-bold">Mombasa Sweetheartness</span>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white">Terms</a>
-                    <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
-                    <a href="#" class="text-gray-400 hover:text-white">Help</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-white">Terms</a>
+                    <a href="terms.html" class="text-gray-400 hover:text-white">Privacy</a>
+                    <a href="how-it-works.html" class="text-gray-400 hover:text-white">Help</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
@@ -422,180 +102,81 @@
         </div>
     </footer>
 
-    <script>
-        // Check if user is already logged in
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (currentUser) {
-                showDashboard(currentUser);
-            }
-        });
+  <script>
+    // Tab switch
+    const loginTab = document.getElementById("login-tab");
+    const signupTab = document.getElementById("signup-tab");
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
 
-        // Tab switching functionality
-        document.getElementById('login-tab').addEventListener('click', function() {
-            document.getElementById('login-form').classList.remove('hidden');
-            document.getElementById('signup-form').classList.add('hidden');
-            document.getElementById('login-tab').classList.add('active', 'text-pink-600', 'border-pink-600');
-            document.getElementById('login-tab').classList.remove('text-gray-500');
-            document.getElementById('signup-tab').classList.remove('active', 'text-pink-600', 'border-pink-600');
-            document.getElementById('signup-tab').classList.add('text-gray-500');
-        });
+    loginTab.addEventListener("click", () => {
+      loginForm.classList.remove("hidden");
+      signupForm.classList.add("hidden");
+      loginTab.classList.add("border-pink-600", "text-pink-600");
+      signupTab.classList.remove("border-pink-600", "text-pink-600");
+    });
 
-        document.getElementById('signup-tab').addEventListener('click', function() {
-            document.getElementById('signup-form').classList.remove('hidden');
-            document.getElementById('login-form').classList.add('hidden');
-            document.getElementById('signup-tab').classList.add('active', 'text-pink-600', 'border-pink-600');
-            document.getElementById('signup-tab').classList.remove('text-gray-500');
-            document.getElementById('login-tab').classList.remove('active', 'text-pink-600', 'border-pink-600');
-            document.getElementById('login-tab').classList.add('text-gray-500');
-        });
+    signupTab.addEventListener("click", () => {
+      signupForm.classList.remove("hidden");
+      loginForm.classList.add("hidden");
+      signupTab.classList.add("border-pink-600", "text-pink-600");
+      loginTab.classList.remove("border-pink-600", "text-pink-600");
+    });
 
-        // Switch between forms
-        document.getElementById('switch-to-signup').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('signup-tab').click();
-        });
+    // Signup
+    document.getElementById("signup-email-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("signup-name").value;
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      let users = JSON.parse(localStorage.getItem("users")) || [];
 
-        document.getElementById('switch-to-login').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('login-tab').click();
-        });
+      if (users.some((u) => u.email === email)) {
+        document.getElementById("email-exists-modal").classList.remove("hidden");
+        return;
+      }
 
-        // Form submission - Sign Up
-        document.getElementById('signup-email-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const firstName = document.getElementById('signup-firstname').value;
-            const lastName = document.getElementById('signup-lastname').value;
-            const email = document.getElementById('signup-email').value;
-            const phone = document.getElementById('signup-phone').value;
-            const password = document.getElementById('signup-password').value;
-            const gender = document.getElementById('signup-gender').value;
-            
-            // Create user object
-            const user = {
-                firstName,
-                lastName,
-                email,
-                phone,
-                password,
-                gender,
-                joinDate: new Date().toLocaleDateString()
-            };
-            
-            // Save user to localStorage
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            users.push(user);
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Set as current user
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            
-            // Show dashboard
-            showDashboard(user);
-        });
+      const user = { name, email, password, profileCompleted: false };
+      users.push(user);
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      window.location.href = "dashboard.html";
+    });
 
-        // Form submission - Login
-        document.getElementById('login-email-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            
-            // Find user in localStorage
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                // Set as current user
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                
-                // Show dashboard
-                showDashboard(user);
-            } else {
-                alert('Invalid email or password. Please try again.');
-            }
-        });
+    // Login
+    document.getElementById("login-email-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find((u) => u.email === email && u.password === password);
+      if (user) {
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Invalid login credentials");
+      }
+    });
 
-        // Logout functionality
-        document.getElementById('logout-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Remove current user
-            localStorage.removeItem('currentUser');
-            
-            // Show auth container and hide dashboard
-            document.getElementById('auth-container').classList.remove('hidden');
-            document.getElementById('dashboard-container').classList.add('hidden');
-            document.getElementById('logout-link').classList.add('hidden');
-            document.getElementById('home-link').classList.remove('hidden');
-            
-            // Reset login form
-            document.getElementById('login-email-form').reset();
-        });
+    function closeModal() {
+      document.getElementById("email-exists-modal").classList.add("hidden");
+    }
 
-        // Home link functionality
-        document.getElementById('home-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            // In a real app, this would redirect to the home page
-            alert('This would redirect to the home page in a real application');
-        });
-
-        // Password validation
-        const password = document.getElementById('signup-password');
-        const confirmPassword = document.getElementById('signup-confirm-password');
-
-        function validatePassword() {
-            if(password.value !== confirmPassword.value) {
-                confirmPassword.setCustomValidity("Passwords don't match");
-            } else {
-                confirmPassword.setCustomValidity('');
-            }
-        }
-
-        password.onchange = validatePassword;
-        confirmPassword.onkeyup = validatePassword;
-
-        // Show dashboard with user data
-        function showDashboard(user) {
-            // Update dashboard with user data
-            document.getElementById('profile-name').textContent = `${user.firstName} ${user.lastName}`;
-            document.getElementById('profile-initials').textContent = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
-            document.getElementById('profile-email').textContent = user.email;
-            document.getElementById('profile-phone').textContent = user.phone;
-            document.getElementById('member-since').textContent = user.joinDate;
-
-            // Update Profile Completeness
-            const complete = user.profileCompleted ? 100 : 60;
-            document.getElementById('completeness-percent').textContent = `${complete}%`;
-            document.getElementById('completeness-bar').style.width = `${complete}%`;
-
-           // Update Matches Found & Messages Sent - Simulated for now
-           const matches = user.profileCompleted ? 22 : 12;
-           const messages = user.profileCompleted ? 14 : 8;
-
-           document.getElementById('matches-found').textContent = matches;
-           document.getElementById('messages-sent').textContent = messages;
-
-            
-            // Set gender text
-            let genderText = '';
-            if (user.gender === 'male') genderText = 'Man looking for a woman';
-            else if (user.gender === 'female') genderText = 'Woman looking for a man';
-            else genderText = 'Other';
-            document.getElementById('profile-gender').textContent = genderText;
-            
-            // Show dashboard and hide auth container
-            document.getElementById('auth-container').classList.add('hidden');
-            document.getElementById('dashboard-container').classList.remove('hidden');
-            document.getElementById('logout-link').classList.remove('hidden');
-            document.getElementById('home-link').classList.add('hidden');
-            
-            // Reset forms
-            document.getElementById('signup-email-form').reset();
-            document.getElementById('login-email-form').reset();
-        }
-    </script>
+    function fakeSocialLogin(provider) {
+      const fakeUser = {
+        name: provider.charAt(0).toUpperCase() + provider.slice(1) + " User",
+        email: provider + "@example.com",
+        password: "social",
+        profileCompleted: false,
+      };
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      if (!users.some((u) => u.email === fakeUser.email)) {
+        users.push(fakeUser);
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+      localStorage.setItem("currentUser", JSON.stringify(fakeUser));
+      window.location.href = "dashboard.html";
+    }
+  </script>
 </body>
 </html>
